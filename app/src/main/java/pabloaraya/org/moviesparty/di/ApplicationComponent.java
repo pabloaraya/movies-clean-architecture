@@ -1,5 +1,6 @@
 package pabloaraya.org.moviesparty.di;
 
+import android.app.Application;
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -7,14 +8,9 @@ import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import pabloaraya.org.moviesparty.MovieApplication;
 
-@Singleton
-@Component(modules = {
-        AndroidInjectionModule.class,
-        ActivityModule.class
-})
-public interface ApplicationComponent extends AndroidInjector<MovieApplication> {
+@Singleton @Component(modules = { ApplicationModule.class }) public interface ApplicationComponent {
 
-    @Component.Builder
-    abstract class Builder extends AndroidInjector.Builder<MovieApplication> {
-    }
+    Application getApplication();
+
+    void inject(MovieApplication movieApplication);
 }

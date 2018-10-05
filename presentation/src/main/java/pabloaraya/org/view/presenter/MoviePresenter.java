@@ -13,17 +13,14 @@ import pabloaraya.org.view.modelview.MovieModelView;
 
 public class MoviePresenter extends BasePresenter<MovieContract.View> implements MovieContract.Presenter {
 
-    @Inject
-    GetMoviesUseCase getMoviesUseCase;
+    private GetMoviesUseCase getMoviesUseCase;
+    private MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper;
 
     @Inject
-    MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper;
-
-    /*public MoviePresenter(GetMoviesUseCase getMoviesUseCase, MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper, Scheduler scheduler) {
+    public MoviePresenter(GetMoviesUseCase getMoviesUseCase, MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper) {
         this.getMoviesUseCase = getMoviesUseCase;
-        this.movieModelViewToMovieModelMapper = movieModelViewToMovieModelMapper:
-        this.scheduler = scheduler;
-    }*/
+        this.movieModelViewToMovieModelMapper = movieModelViewToMovieModelMapper;
+    }
 
     @Override
     public void loadMovies() {

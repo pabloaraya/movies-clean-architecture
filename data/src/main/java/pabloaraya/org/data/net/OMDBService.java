@@ -1,13 +1,11 @@
 package pabloaraya.org.data.net;
 
-import java.util.List;
-
 import io.reactivex.Observable;
-import pabloaraya.org.data.entity.MovieEntity;
+import pabloaraya.org.data.entity.ResponseEntity;
 import retrofit2.http.GET;
 
 public interface OMDBService {
 
-    @GET("i=tt3896198&apikey=6f09952c")
-    Observable<List<MovieEntity>> getMovies();
+  @GET("?s=saw&apikey=6f09952c")
+  Observable<ResponseEntity> getMovies();
 }

@@ -13,16 +13,23 @@ import pabloaraya.org.domain.repository.mapper.MovieModelToMovieEntityMapper;
 
 public class MovieApiRepository implements MovieRepository {
 
-    @Inject MovieDataSource movieDataSource;
-    @Inject MovieModelToMovieEntityMapper movieModelToMovieEntityMapper;
+  private MovieDataSource movieDataSource;
+  private MovieModelToMovieEntityMapper movieModelToMovieEntityMapper;
 
-    @Override
-    public Observable<List<MovieModel>> getMovies() {
-        return movieDataSource.getMovies().map(new Function<List<MovieEntity>, List<MovieModel>>() {
-            @Override
-            public List<MovieModel> apply(List<MovieEntity> movieEntities) {
-                return movieModelToMovieEntityMapper.reverseMap(movieEntities);
-            }
-        });
-    }
+  @Inject
+  public MovieApiRepository(MovieDataSource movieDataSource,
+      MovieModelToMovieEntityMapper movieModelToMovieEntityMapper) {
+    this.movieDataSource = movieDataSource;
+    this.movieModelToMovieEntityMapper = movieModelToMovieEntityMapper;
+  }
+
+  @Override
+  public Observable<List<MovieModel>> getMovies() {
+    return movieDataSource.getMovies().map(new Function<List<MovieEntity>, List<MovieModel>>() {
+      @Override
+      public List<MovieModel> apply(List<MovieEntity> movieEntities) {
+        return movieModelToMovieEntityMapper.reverseMap(movieEntities);
+      }
+    });
+  }
 }

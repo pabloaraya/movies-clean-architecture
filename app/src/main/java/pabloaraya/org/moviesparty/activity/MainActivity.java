@@ -11,8 +11,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+import pabloaraya.org.moviesparty.MovieApplication;
 import pabloaraya.org.moviesparty.R;
 import pabloaraya.org.moviesparty.adapter.MovieAdapter;
+import pabloaraya.org.moviesparty.di.ApplicationModule;
+import pabloaraya.org.moviesparty.di.DaggerMovieComponent;
+import pabloaraya.org.moviesparty.di.MovieModule;
 import pabloaraya.org.view.contract.MovieContract;
 import pabloaraya.org.view.modelview.MovieModelView;
 import pabloaraya.org.view.presenter.MoviePresenter;
@@ -28,9 +32,14 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DaggerMovieComponent.builder()
+            .applicationComponent(MovieApplication.getApplicationComponent())
+            .movieModule(new MovieModule())
+            .build()
+            .inject(this);
 
         mRecyclerView = findViewById(R.id.my_recycler_view);
 

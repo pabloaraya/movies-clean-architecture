@@ -11,7 +11,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    implementation project (":data")
+    api project (":data")
 }
 
 sourceCompatibility = "7"

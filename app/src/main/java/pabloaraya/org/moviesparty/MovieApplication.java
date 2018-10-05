@@ -1,13 +1,23 @@
 package pabloaraya.org.moviesparty;
 
-import dagger.android.AndroidInjector;
-import dagger.android.DaggerApplication;
+import android.app.Application;
+import pabloaraya.org.moviesparty.di.ApplicationComponent;
+import pabloaraya.org.moviesparty.di.ApplicationModule;
 import pabloaraya.org.moviesparty.di.DaggerApplicationComponent;
 
-public class MovieApplication extends DaggerApplication {
+public class MovieApplication extends Application {
 
-    @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return DaggerApplicationComponent.builder().create(this);
+    private static ApplicationComponent applicationComponent;
+
+    @Override public void onCreate() {
+        super.onCreate();
+        applicationComponent =
+            DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+
+        applicationComponent.inject(this);
+    }
+
+    public static ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
     }
 }

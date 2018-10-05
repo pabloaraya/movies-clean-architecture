@@ -1,22 +1,26 @@
 package pabloaraya.org.moviesparty.di;
 
+import android.app.Application;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import pabloaraya.org.domain.usecase.GetMoviesUseCase;
 import pabloaraya.org.view.di.PresentationModule;
+import pabloaraya.org.view.mapper.MovieModelViewToMovieModelMapper;
 import pabloaraya.org.view.presenter.MoviePresenter;
 
 @Module(includes = PresentationModule.class)
 public class ApplicationModule {
 
-    @Provides
-    public Scheduler provideAndroidProvide() {
-        return AndroidSchedulers.mainThread();
-    }
+  private Application mApplication;
 
-    @Provides
-    public MoviePresenter provideMoviePresenter() {
-        return new MoviePresenter();
-    }
+  public ApplicationModule(Application application) {
+    mApplication = application;
+  }
+
+  @Provides
+  Application providesApplication() {
+    return mApplication;
+  }
 }

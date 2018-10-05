@@ -11,12 +11,12 @@ import pabloaraya.org.domain.repository.MovieRepository;
 
 public class GetMoviesUseCase extends UseCase<List<MovieModel>> {
 
-    @Inject
-    MovieRepository movieRepository;
+    private MovieRepository movieRepository;
 
     @Inject
-    public GetMoviesUseCase(Scheduler scheduler) {
+    public GetMoviesUseCase(MovieRepository movieRepository, Scheduler scheduler) {
         super(scheduler);
+        this.movieRepository = movieRepository;
     }
 
     @Override

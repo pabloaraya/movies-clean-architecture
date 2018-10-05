@@ -1,11 +1,9 @@
 package pabloaraya.org.data.retrofit;
 
-import java.util.List;
-
 import io.reactivex.Observable;
-import pabloaraya.org.data.entity.MovieEntity;
+import pabloaraya.org.data.entity.ResponseEntity;
 
 public interface MovieRestApi {
 
-    Observable<List<MovieEntity>> getMovies();
+  Observable<ResponseEntity> getMovies();
 }
