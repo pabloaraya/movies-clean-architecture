@@ -8,6 +8,7 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 import pabloaraya.org.data.datasource.MovieDataSource;
 import pabloaraya.org.data.entity.MovieEntity;
+import pabloaraya.org.data.retrofit.MovieRestApi;
 import pabloaraya.org.domain.model.MovieModel;
 import pabloaraya.org.domain.repository.mapper.MovieModelToMovieEntityMapper;
 

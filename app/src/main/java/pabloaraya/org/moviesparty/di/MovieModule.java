@@ -44,8 +44,7 @@ public class MovieModule {
   }
 
   @Provides
-  public MoviePresenter provideMoviePresenter(GetMoviesUseCase getMoviesUseCase,
-      MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper) {
-    return new MoviePresenter(getMoviesUseCase, movieModelViewToMovieModelMapper);
+  public MoviePresenter provideMoviePresenter(GetMoviesUseCase getMoviesUseCase) {
+    return new MoviePresenter(getMoviesUseCase);
   }
 }
