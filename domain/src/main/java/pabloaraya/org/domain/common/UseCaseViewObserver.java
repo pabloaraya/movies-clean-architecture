@@ -1,4 +1,4 @@
-package pabloaraya.org.domain.usecase;
+package pabloaraya.org.domain.common;
 
 import io.reactivex.observers.DisposableObserver;
 

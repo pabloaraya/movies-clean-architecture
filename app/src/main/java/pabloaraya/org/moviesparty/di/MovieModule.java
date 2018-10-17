@@ -10,6 +10,7 @@ import pabloaraya.org.domain.repository.MovieRepository;
 import pabloaraya.org.domain.repository.mapper.MovieModelToMovieEntityMapper;
 import pabloaraya.org.domain.usecase.GetMoviesUseCase;
 import pabloaraya.org.view.mapper.MovieModelViewToMovieModelMapper;
+import pabloaraya.org.view.observer.MovieListObserver;
 import pabloaraya.org.view.presenter.MoviePresenter;
 
 @Module
@@ -18,6 +19,11 @@ public class MovieModule {
   @Provides
   public MovieModelToMovieEntityMapper provideMovieModelToMovieEntityMapper() {
     return new MovieModelToMovieEntityMapper();
+  }
+
+  @Provides
+  public MovieModelViewToMovieModelMapper provideMovieModelViewToMovieModelMapper() {
+    return new MovieModelViewToMovieModelMapper();
   }
 
   @Provides
@@ -44,7 +50,14 @@ public class MovieModule {
   }
 
   @Provides
-  public MoviePresenter provideMoviePresenter(GetMoviesUseCase getMoviesUseCase) {
-    return new MoviePresenter(getMoviesUseCase);
+  public MoviePresenter provideMoviePresenter(GetMoviesUseCase getMoviesUseCase,
+      MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper) {
+    return new MoviePresenter(getMoviesUseCase, movieModelViewToMovieModelMapper);
+  }
+
+  @Provides
+  public MovieListObserver provideMovieListObserver(
+      MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper) {
+    return new MovieListObserver(movieModelViewToMovieModelMapper);
   }
 }
