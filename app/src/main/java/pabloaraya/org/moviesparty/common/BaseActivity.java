@@ -1,4 +1,4 @@
-package pabloaraya.org.moviesparty.activity;
+package pabloaraya.org.moviesparty.common;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

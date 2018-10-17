@@ -11,14 +11,16 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import butterknife.BindView;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import pabloaraya.org.moviesparty.MovieApplication;
 import pabloaraya.org.moviesparty.R;
 import pabloaraya.org.moviesparty.adapter.MovieAdapter;
+import pabloaraya.org.moviesparty.common.BaseActivity;
 import pabloaraya.org.moviesparty.di.DaggerMovieComponent;
 import pabloaraya.org.moviesparty.di.MovieModule;
 import pabloaraya.org.view.contract.MovieContract;
@@ -30,12 +32,14 @@ public class MainActivity extends BaseActivity implements MovieContract.View {
   private RecyclerView.Adapter mAdapter;
   private RecyclerView.LayoutManager mLayoutManager;
 
-  @BindView(R.id.my_recycler_view) RecyclerView mRecyclerView;
-  @BindView(R.id.loading) ProgressBar mProgressBar;
+  private RecyclerView mRecyclerView;
+  private ProgressBar mProgressBar;
 
   @Inject MoviePresenter presenter;
 
   @Override protected void onPrepareActivity() {
+    mProgressBar = findViewById(R.id.loading);
+    mRecyclerView = findViewById(R.id.my_recycler_view);
     mLayoutManager = new LinearLayoutManager(this);
     mRecyclerView.setLayoutManager(mLayoutManager);
     mRecyclerView.setHasFixedSize(true);
@@ -44,14 +48,6 @@ public class MainActivity extends BaseActivity implements MovieContract.View {
   @Override protected void onPreparePresenter() {
     presenter.attachView(this);
     presenter.loadMovies();
-  }
-
-  @Override protected void onInject() {
-    DaggerMovieComponent.builder()
-        .applicationComponent(MovieApplication.getApplicationComponent())
-        .movieModule(new MovieModule())
-        .build()
-        .inject(this);
   }
 
   @Override
@@ -103,6 +99,14 @@ public class MainActivity extends BaseActivity implements MovieContract.View {
 
   @Override protected int getLayoutId() {
     return R.layout.activity_main;
+  }
+
+  @Override protected void onInject() {
+    DaggerMovieComponent.builder()
+            .applicationComponent(MovieApplication.getApplicationComponent())
+            .movieModule(new MovieModule())
+            .build()
+            .inject(this);
   }
 }
 
