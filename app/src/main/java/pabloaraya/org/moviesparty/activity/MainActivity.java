@@ -70,7 +70,9 @@ public class MainActivity extends BaseActivity implements MovieContract.View {
 
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       @Override public boolean onQueryTextSubmit(String query) {
-        // TODO: Get query value...
+        if (!query.isEmpty()) {
+          presenter.loadMoviesByName(query);
+        }
         return false;
       }
 

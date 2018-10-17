@@ -6,4 +6,6 @@ import pabloaraya.org.data.entity.ResponseEntity;
 public interface MovieRestApi {
 
   Observable<ResponseEntity> getMovies();
+
+  Observable<ResponseEntity> getMoviesByName(String name);
 }

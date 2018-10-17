@@ -8,4 +8,6 @@ import pabloaraya.org.domain.model.MovieModel;
 public interface MovieRepository {
 
     Observable<List<MovieModel>> getMovies();
+
+    Observable<List<MovieModel>> getMoviesByName(String name);
 }

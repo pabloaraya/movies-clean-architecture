@@ -13,5 +13,6 @@ public interface MovieContract {
 
     interface Presenter {
         void loadMovies();
+        void loadMoviesByName(String name);
     }
 }

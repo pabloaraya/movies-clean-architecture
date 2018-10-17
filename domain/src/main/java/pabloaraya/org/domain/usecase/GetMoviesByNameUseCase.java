@@ -20,6 +20,6 @@ public class GetMoviesByNameUseCase extends UseCaseParam<String, List<MovieModel
 
     @Override
     protected Observable<List<MovieModel>> buildUseCaseObservable(String name) {
-        return movieRepository.getMovies();
+        return movieRepository.getMoviesByName(name);
     }
 }

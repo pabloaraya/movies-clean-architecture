@@ -8,4 +8,6 @@ import pabloaraya.org.data.entity.MovieEntity;
 public interface MovieDataSource {
 
     Observable<List<MovieEntity>> getMovies();
+
+    Observable<List<MovieEntity>> getMoviesByName(String name);
 }

@@ -27,4 +27,14 @@ public class MovieApiDataSource implements MovieDataSource {
       }
     });
   }
+
+  @Override
+  public Observable<List<MovieEntity>> getMoviesByName(String name) {
+    return movieRestApi.getMoviesByName(name).map(new Function<ResponseEntity, List<MovieEntity>>() {
+      @Override
+      public List<MovieEntity> apply(ResponseEntity responseEntity) {
+        return responseEntity.movieEntities;
+      }
+    });
+  }
 }
