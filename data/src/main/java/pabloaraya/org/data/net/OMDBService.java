@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 
 public interface OMDBService {
 
-  @GET("?s=saw&apikey=6f09952c")
+  @GET("?s=love&apikey=6f09952c")
   Observable<ResponseEntity> getMovies();
 
   @GET("?apikey=6f09952c")

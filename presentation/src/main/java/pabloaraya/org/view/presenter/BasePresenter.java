@@ -2,7 +2,6 @@ package pabloaraya.org.view.presenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import pabloaraya.org.domain.common.BaseUseCase;
 
 public abstract class BasePresenter<V extends BasePresenter.View> {

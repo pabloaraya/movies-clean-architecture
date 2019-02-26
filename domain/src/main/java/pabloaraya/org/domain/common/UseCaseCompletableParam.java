@@ -1,13 +1,11 @@
 package pabloaraya.org.domain.common;
 
-import javax.inject.Inject;
-
 import dagger.internal.Preconditions;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
-import pabloaraya.org.domain.common.BaseUseCase;
+import javax.inject.Inject;
 
 public abstract class UseCaseCompletableParam<P> extends BaseUseCase {
 

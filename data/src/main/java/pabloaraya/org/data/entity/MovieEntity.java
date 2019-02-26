@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class MovieEntity {
 
-    @SerializedName("Title")
-    public String title;
+  @SerializedName("Title")
+  public String title;
+
+  @SerializedName("Poster")
+  public String poster;
 }

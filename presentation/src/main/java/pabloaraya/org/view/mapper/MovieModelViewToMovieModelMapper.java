@@ -19,6 +19,7 @@ public class MovieModelViewToMovieModelMapper extends Mapper<MovieModelView, Mov
     public MovieModelView reverseMap(MovieModel value) {
         MovieModelView movieModelView = new MovieModelView();
         movieModelView.title = value.title;
+        movieModelView.poster = value.poster;
         return movieModelView;
     }
 }

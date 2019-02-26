@@ -15,7 +15,7 @@ public class MovieApiImp extends RetrofitApiClient<OMDBService> implements Movie
   }
 
   @Override
-  public Observable<ResponseEntity> getMovies() {
+  public Observable<ResponseEntity> getMovies(String letter) {
     return apiService.getMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(scheduler);

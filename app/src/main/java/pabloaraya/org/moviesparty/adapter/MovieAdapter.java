@@ -1,13 +1,13 @@
 package pabloaraya.org.moviesparty.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
+import com.squareup.picasso.Picasso;
 import java.util.List;
-
 import pabloaraya.org.moviesparty.R;
 import pabloaraya.org.view.modelview.MovieModelView;
 
@@ -20,11 +20,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
+        public AppCompatTextView mTextView;
+        public AppCompatImageView mPosterView;
 
         public MyViewHolder(View v) {
             super(v);
-            mTextView = v.findViewById(R.id.my_text_view);
+            mTextView = v.findViewById(R.id.titleView);
+            mPosterView = v.findViewById(R.id.posterView);
         }
     }
 
@@ -50,7 +52,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(movieModelViews.get(position).title);
-
+        Picasso.get().load(movieModelViews.get(position).poster).into(holder.mPosterView);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

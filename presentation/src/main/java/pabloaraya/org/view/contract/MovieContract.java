@@ -1,7 +1,6 @@
 package pabloaraya.org.view.contract;
 
 import java.util.List;
-
 import pabloaraya.org.view.modelview.MovieModelView;
 import pabloaraya.org.view.presenter.BasePresenter;
 

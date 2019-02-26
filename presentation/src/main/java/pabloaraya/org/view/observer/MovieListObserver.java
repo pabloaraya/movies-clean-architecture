@@ -1,11 +1,9 @@
 package pabloaraya.org.view.observer;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
-import pabloaraya.org.domain.model.MovieModel;
 import pabloaraya.org.domain.common.UseCaseViewObserver;
+import pabloaraya.org.domain.model.MovieModel;
 import pabloaraya.org.view.contract.MovieContract;
 import pabloaraya.org.view.mapper.MovieModelViewToMovieModelMapper;
 import pabloaraya.org.view.modelview.MovieModelView;
@@ -28,6 +26,7 @@ public class MovieListObserver extends UseCaseViewObserver<MovieContract.View, L
   }
 
   @Override public void onNext(List<MovieModel> movieModels) {
+
     List<MovieModelView> productViews = movieModelViewToMovieModelMapper.reverseMap(movieModels);
     getView().setMovieItems(productViews);
   }

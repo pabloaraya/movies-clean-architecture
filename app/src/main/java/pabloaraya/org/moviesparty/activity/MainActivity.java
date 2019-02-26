@@ -2,21 +2,16 @@ package pabloaraya.org.moviesparty.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.airbnb.lottie.LottieAnimationView;
 import java.util.List;
-
 import javax.inject.Inject;
-
-import butterknife.BindView;
 import pabloaraya.org.moviesparty.MovieApplication;
 import pabloaraya.org.moviesparty.R;
 import pabloaraya.org.moviesparty.adapter.MovieAdapter;
@@ -33,14 +28,14 @@ public class MainActivity extends BaseActivity implements MovieContract.View {
   private RecyclerView.LayoutManager mLayoutManager;
 
   private RecyclerView mRecyclerView;
-  private ProgressBar mProgressBar;
+  private LottieAnimationView mProgressBar;
 
   @Inject MoviePresenter presenter;
 
   @Override protected void onPrepareActivity() {
     mProgressBar = findViewById(R.id.loading);
     mRecyclerView = findViewById(R.id.my_recycler_view);
-    mLayoutManager = new LinearLayoutManager(this);
+    mLayoutManager = new GridLayoutManager(this, 2);
     mRecyclerView.setLayoutManager(mLayoutManager);
     mRecyclerView.setHasFixedSize(true);
   }

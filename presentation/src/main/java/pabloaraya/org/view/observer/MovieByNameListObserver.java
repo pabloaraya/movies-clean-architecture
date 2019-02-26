@@ -1,9 +1,7 @@
 package pabloaraya.org.view.observer;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import pabloaraya.org.domain.common.UseCaseViewObserver;
 import pabloaraya.org.domain.model.MovieModel;
 import pabloaraya.org.view.contract.MovieContract;
