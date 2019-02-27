@@ -9,15 +9,15 @@ pipeline {
     disableConcurrentBuilds()
   }
  stages {
-     stage('Starting pipeline') {
-         steps {
-             echo "Starting pipeline"
-         }
+     stage('Build') {
+        steps {
+          sh 'gradle clean assembledevDebug'
+        }
      }
-     stage('Build project') {
-         steps {
-	     echo "For now, nothing to do"
-         }
+     stage('Unit Tests') {
+        steps {
+	        sh 'gradle app:testDevDebugUnitTest'
+        }
      }
  }
 }
