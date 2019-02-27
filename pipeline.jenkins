@@ -14,12 +14,29 @@ pipeline {
  stages {
      stage('Build') {
         steps {
-          sh 'gradle clean assembledevDebug'
+          sh 'gradle clean assemble'
+        }
+     }
+     stage('Checkstyle Checks') {
+        steps {
+          sh 'gradle checkstyle'
+          checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/reports/checkstyle/checkstyle.xml', unHealthy: ''
+        }
+     }
+     stage('Lint Checks') {
+        steps {
+          sh 'gradle lintDebug'
+          androidLint canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/build/reports/lint-results*.xml', unHealthy: ''
         }
      }
      stage('Unit Tests') {
         steps {
-	        sh 'gradle app:testDevDebugUnitTest'
+	        sh 'gradle testDebugUnitTest'
+        }
+        post {
+          always {
+            junit '**/build/test-results/**/*.xml'
+          }
         }
      }
  }
