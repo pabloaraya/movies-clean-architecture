@@ -8,6 +8,9 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '30'))
     disableConcurrentBuilds()
   }
+  tools {
+    gradle 'android-gradle'
+  }
  stages {
      stage('Build') {
         steps {
