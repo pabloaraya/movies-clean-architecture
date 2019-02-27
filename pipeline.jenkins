@@ -19,7 +19,7 @@ pipeline {
      }
      stage('Checkstyle Checks') {
         steps {
-          sh 'gradle checkstyle'
+          sh 'gradle app:checkstyle'
           checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/reports/checkstyle/checkstyle.xml', unHealthy: ''
         }
      }
