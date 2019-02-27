@@ -18,7 +18,10 @@ android {
     }
   }
 
-  // Checkstyle configuration.
+  lintOptions {
+    abortOnError false
+  }
+
   checkstyle {
     toolVersion "8.4"
   }
