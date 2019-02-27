@@ -39,5 +39,18 @@ pipeline {
           }
         }
      }
+     stage('Jacoco Report') {
+        steps {
+          sh 'gradle app:jacocoTestReport'
+          publishHTML target: [
+                 allowMissing: false,
+                 alwaysLinkToLastBuild: false,
+                 keepAll: true,
+                 reportDir: 'app/build/reports/jacoco/jacocoTestReport/html',
+                 reportFiles: 'index.html',
+                 reportName: 'JacocoCov Report'
+                 ]
+        }
+     }
  }
 }
