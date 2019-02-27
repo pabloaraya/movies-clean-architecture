@@ -1,0 +1,23 @@
+pipeline {
+ agent {
+    label 'master'
+ }
+ options {
+    timestamps()
+    timeout(time: 30, unit: 'MINUTES')
+    buildDiscarder(logRotator(numToKeepStr: '30'))
+    disableConcurrentBuilds()
+  }
+ stages {
+     stage('Starting pipeline') {
+         steps {
+             echo "Starting pipeline"
+         }
+     }
+     stage('Build project') {
+         steps {
+	     echo "For now, nothing to do"
+         }
+     }
+ }
+}
