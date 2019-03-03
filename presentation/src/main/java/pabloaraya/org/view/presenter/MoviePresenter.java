@@ -17,6 +17,9 @@ public class MoviePresenter extends BasePresenter<MovieContract.View>
   private GetMoviesByNameUseCase getMoviesByNameUseCase;
   private MovieModelViewToMovieModelMapper movieModelViewToMovieModelMapper;
 
+  private MovieListObserver movieListObserver;
+  private MovieByNameListObserver movieByNameListObserver;
+
   @Inject
   public MoviePresenter(GetMoviesUseCase getMoviesUseCase,
       GetMoviesByNameUseCase getMoviesByNameUseCase,
@@ -28,7 +31,7 @@ public class MoviePresenter extends BasePresenter<MovieContract.View>
 
   @Override
   public void loadMovies() {
-    MovieListObserver movieListObserver = new MovieListObserver(movieModelViewToMovieModelMapper);
+    movieListObserver = new MovieListObserver(movieModelViewToMovieModelMapper);
     movieListObserver.attachView(getView());
     getMoviesUseCase.execute(movieListObserver);
   }
@@ -36,7 +39,7 @@ public class MoviePresenter extends BasePresenter<MovieContract.View>
   @Override
   public void loadMoviesByName(String name) {
     getView().setMovieItems(new ArrayList<MovieModelView>());
-    MovieByNameListObserver movieByNameListObserver =
+    movieByNameListObserver =
         new MovieByNameListObserver(movieModelViewToMovieModelMapper);
     movieByNameListObserver.attachView(getView());
     getMoviesByNameUseCase.execute(movieByNameListObserver, name);
