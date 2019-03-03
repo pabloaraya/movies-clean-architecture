@@ -47,7 +47,7 @@ public class MoviePresenterTest {
   public void shouldExecuteLoadMoviesByNameCorrectly() {
     moviePresenter.attachView(view);
     moviePresenter.loadMoviesByName(anyString());
-    verify(getMoviesByNameUseCase, times(1)).execute(any(DisposableObserver.class), anyString());
-    verifyNoMoreInteractions(movieListObserver);
+    verify(getMoviesByNameUseCase, times(2)).execute(any(DisposableObserver.class), anyString());
+    verifyNoMoreInteractions(movieByNameListObserver);
   }
 }
