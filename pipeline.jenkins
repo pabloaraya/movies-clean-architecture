@@ -29,7 +29,22 @@ pipeline {
           androidLint canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/build/reports/lint-results*.xml', unHealthy: ''
         }
      }
-     stage('Unit Tests') {
+     stage('Unit Tests Data Layer') {
+        steps {
+	        sh 'gradle data:test'
+        }
+     }
+     stage('Unit Tests Domain Layer') {
+        steps {
+	        sh 'gradle domain:test'
+        }
+     }
+     stage('Unit Tests Presentation Layer') {
+        steps {
+	        sh 'gradle presentation:test'
+        }
+     }
+     stage('Unit Tests App Layer') {
         steps {
 	        sh 'gradle testDebugUnitTest'
         }
