@@ -15,6 +15,6 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
 
   classDirectories = fileTree(dir: './build/intermediates/classes/debug',
       excludes: ['**/R*.class'])
-  sourceDirectories = files("${buildDir.parent}/src/main/java", "${buildDir.parent}/src/main/kotlin")
+  sourceDirectories = files("${buildDir.parent}/src/main/java")
   executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
 }
