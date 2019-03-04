@@ -14,7 +14,7 @@ pipeline {
  stages {
      stage('Build') {
         steps {
-          sh 'gradle clean assemble'
+          sh 'gradle clean assembleDebug'
         }
      }
      stage('Checkstyle Checks') {
